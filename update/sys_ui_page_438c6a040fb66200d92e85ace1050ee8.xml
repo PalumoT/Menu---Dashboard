@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_44552_menu_das_dashboard.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<script language="javascript" src="x_44552_menu_das.angular_1_3_x.jsdbx" />
+	<script language="javascript" src="service.sn-glideAjax.jsdbx" />
+	<script language="javascript" src="x_44552_menu_das.app_angular_menu.jsdbx" />
+	
+	<style>
+		.tile{
+			position: relative;
+			display:inline-block;
+			height: 150px;
+			width: 150px;
+			border: 1px solid grey;
+			text-align:center;
+			line-height:150px;
+			margin: 10px;
+			border-radius: 15px;
+		}
+		
+		.tile:hover{
+			cursor: pointer;
+			font-weight: bold;
+		}
+		
+		.tile .custom-badge{
+			position:absolute;
+			background-color: grey;
+			color: white;
+			top: 10px;
+			right: 10px;
+			border: 1px solid black;
+			height:20px;
+			width:20px;
+			line-height: 20px;
+			border-radius:50%;
+		}
+	</style>
+	
+	<div class="container-fluid" ng-app="app_angular_menu" ng_controller="MenuController">
+		<h2 class="title">{{ title }}</h2>
+		<h4>{{ subtitle }}</h4>
+		<div>Status: {{ message }}</div>
+		<label>Search: <input class="form-control" ng-model="search.name"/></label>
+		<div>
+			<ol class="breadcrumb">
+			  <li ng-repeat="item in path">
+					<a ng-click="clickTile(item)">{{ item.name }}</a>
+				</li>
+			</ol>
+			<ul class="list-inline">
+				
+			</ul>
+		</div>
+		<div ng-show="!loading">
+			<div class="tile" ng-repeat="tile in tiles | filter:search" ngBind="tile" ng-click="clickTile(tile)">
+				{{ tile.name }}
+				<span class="custom-badge">{{ tile.submenus.length}}</span>
+			</div>
+		</div>
+	</div>
+</j:jelly>]]></html>
+        <name>dashboard</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-10-26 15:18:36</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>438c6a040fb66200d92e85ace1050ee8</sys_id>
+        <sys_mod_count>106</sys_mod_count>
+        <sys_name>dashboard</sys_name>
+        <sys_package display_value="Menu - Dashboard" source="x_44552_menu_das">2d7cee8c0f766200d92e85ace1050ecc</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Menu - Dashboard">2d7cee8c0f766200d92e85ace1050ecc</sys_scope>
+        <sys_update_name>sys_ui_page_438c6a040fb66200d92e85ace1050ee8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-10-27 17:08:37</sys_updated_on>
+    </sys_ui_page>
+</record_update>

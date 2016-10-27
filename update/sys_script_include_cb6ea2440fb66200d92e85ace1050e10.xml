@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_44552_menu_das.MenuDashboard</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>MenuDashboard</name>
+        <script><![CDATA[var MenuDashboard = Class.create();
+MenuDashboard.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	getDefaultMenus: function(){
+		var result = [];
+		
+		var query = new GlideRecord("sys_app_application");
+		query.addQuery("active","true");
+		query.query();
+		
+		while(query.next()){
+			var menu = {};
+			menu.name = query.title.toString();
+			menu.sys_id = query.sys_id.toString();
+			menu.level = 1;
+			menu.submenus = this._getMenus(menu.sys_id);
+			result.push(menu);
+		}
+		
+		return new global.JSON().encodeArray(result);
+	},
+		
+	_getMenus: function(parent){
+		var menus = [];
+		var query = new GlideRecord("sys_app_module");
+		query.addQuery("application", parent);
+		query.addNotNullQuery("link_type!=SEPARATOR");
+		query.query();
+
+		while(query.next()){
+			var menu = {};
+			menu.name = query.title.toString();
+			menu.sys_id = query.sys_id.toString();
+			menu.level = 2;
+			menus.push(menu);
+		}
+		
+		return menus;
+	},
+	
+	getTiles: function(){
+		var tiles = [];
+		var parent = this.getParameter("parent") ? this.getParameter("parent") : null;
+		
+		var query = new GlideRecord("x_44552_menu_das_tile");
+		query.addQuery("parent", parent);
+		query.query();
+		
+		while(query.next()){
+			var tile = {};
+			tile.sys_id = query.sys_id.toString();
+			tile.name = query.name.toString();
+			tile.level = query.level.toString();
+			tiles.push(tile);
+		}
+		
+		return new global.JSON().encodeArray(tiles);
+	},
+								   
+    type: 'MenuDashboard'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-10-26 15:26:48</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>cb6ea2440fb66200d92e85ace1050e10</sys_id>
+        <sys_mod_count>105</sys_mod_count>
+        <sys_name>MenuDashboard</sys_name>
+        <sys_package display_value="Menu - Dashboard" source="x_44552_menu_das">2d7cee8c0f766200d92e85ace1050ecc</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Menu - Dashboard">2d7cee8c0f766200d92e85ace1050ecc</sys_scope>
+        <sys_update_name>sys_script_include_cb6ea2440fb66200d92e85ace1050e10</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-10-27 16:23:32</sys_updated_on>
+    </sys_script_include>
+</record_update>

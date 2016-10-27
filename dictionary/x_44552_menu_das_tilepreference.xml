@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="task" label="Tile Preference" max_length="40" name="x_44552_menu_das_tilepreference" type="collection"/>
+</database>
