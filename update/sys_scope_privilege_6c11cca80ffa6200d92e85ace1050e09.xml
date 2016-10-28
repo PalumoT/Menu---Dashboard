@@ -7,7 +7,7 @@
         <sys_class_name>sys_scope_privilege</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-10-27 16:05:50</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>6c11cca80ffa6200d92e85ace1050e09</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>sys_app_application</sys_name>

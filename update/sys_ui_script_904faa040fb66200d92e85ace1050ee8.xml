@@ -9,32 +9,90 @@
 angular.module("app_angular_menu").controller("MenuController", 
 	function($scope, GlideAjax){
 		var scope = "x_44552_menu_das";
-		$scope.loading = true;
 		$scope.searchText = "";
 		$scope.title = "Menu - Dashboard";
 		$scope.subtitle = "Today is a good day to code";
 		$scope.tiles = [];
-		$scope.path = [{"sys_id": "", "name": "HomePage", "level": 0}];
 		$scope.message = "loading data...";
-		$scope.parent = null;
+		$scope.data = [];
+		$scope.show = "tiles";
 		
 		$scope.clickTile = function(tile){
-			$scope.message = "loading tiles for " + tile.name ;
+			$scope.loadingData = true;
+			$scope.message = "loading tiles app_angular_menu " + tile.name ;
 			getTiles(tile);
+		};
+	
+		$scope.showTiles = function(){
+			$scope.show = "tiles";
+		};
+		
+		$scope.showApplications = function(){
+			$scope.show = "applications";
+		};
+	
+		$scope.selectApplication = function(application){
+			application.checked = !application.checked;
+			if(application.checked){
+				$scope.data.push(application.name);
+			}else{
+				var index = $scope.data.indexOf(application.name);
+				$scope.data.splice(index, 1);
+			}
+			
+			$scope.message = $scope.data.length + " tiles selected";
+		};
+	
+		$scope.saveTiles = function(){
+			$scope.message = "saving...";
+			var ga = new GlideAjax("MenuDashboard");
+			ga.addParam("sysparm_name", "saveTiles");
+			ga.addParam("sysparm_inputs", JSON.stringify($scope.data));
+			ga.setScope(scope);
+			ga.getJSON(function(response){
+				if(!response){
+					$scope.message = "No response received";
+					return;
+				}
+				
+				$scope.message = response.success;
+			});
+		};
+	
+		$scope.deleteTile = function(tile){
+			if(confirm("Are you sure you want to delete " + tile.name + " ?")){
+				$scope.message = "please wait...";
+				var ga = new GlideAjax("MenuDashboard");
+				ga.addParam("sysparm_name", "deleteTile");
+				ga.addParam("sys_id", tile.sys_id);
+				ga.setScope(scope);
+				ga.getJSON(function(response){
+					if(!response){
+						$scope.message = "No response received";
+						return ;
+					}
+
+					if(!response.success){
+						$scope.message = response.error;
+						return ;
+					}
+					
+					
+					$scope.message = response.success;
+					$scope.tiles.splice(tile.sys_id, 1);
+				});
+			}
 		};
 
 		load();
 		
 		function load(){
-			getDefaultApplications();
+			getTiles();
 		}
 	
-		function getDefaultApplications(){
-			$scope.loading = true;
-			$scope.parent = parent;
-			
+		function getApplications(){
 			var ga = new GlideAjax("MenuDashboard");
-			ga.addParam("sysparm_name", "getDefaultMenus");
+			ga.addParam("sysparm_name", "getApplications");
 			ga.setScope(scope);
 			ga.getJSON(function(response){
 				if(!response){
@@ -47,25 +105,15 @@ angular.module("app_angular_menu").controller("MenuController",
 					return ;
 				}
 				
-				$scope.message = response.length + " tiles loaded";
-				$scope.tiles = response;
-				$scope.loading = false;
-			});		
+				$scope.applications = response;
+			});
 		}
 	
 		function getTiles(parent){
-			$scope.loading = true;
 			$scope.parent = parent;
 			
 			var ga = new GlideAjax("MenuDashboard");
 			ga.addParam("sysparm_name", "getTiles");
-			
-			if(parent){
-				ga.addParam("parent", parent.sys_id);
-				$scope.path.splice(parent.level, $scope.path.length);
-				$scope.path.push(parent);
-			}
-			
 			ga.setScope(scope);
 			ga.getJSON(function(response){
 				if(!response){
@@ -80,7 +128,6 @@ angular.module("app_angular_menu").controller("MenuController",
 				
 				$scope.message = response.length + " tiles loaded";
 				$scope.tiles = response;
-				$scope.loading = false;
 			});		
 		}
 	}
@@ -91,7 +138,7 @@ angular.module("app_angular_menu").controller("MenuController",
         <sys_created_on>2016-10-26 15:32:29</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>904faa040fb66200d92e85ace1050ee8</sys_id>
-        <sys_mod_count>72</sys_mod_count>
+        <sys_mod_count>128</sys_mod_count>
         <sys_name>x_44552_menu_das.app_angular_menu</sys_name>
         <sys_package display_value="Menu - Dashboard" source="x_44552_menu_das">2d7cee8c0f766200d92e85ace1050ecc</sys_package>
         <sys_policy/>
@@ -99,7 +146,7 @@ angular.module("app_angular_menu").controller("MenuController",
         <sys_scope display_value="Menu - Dashboard">2d7cee8c0f766200d92e85ace1050ecc</sys_scope>
         <sys_update_name>sys_ui_script_904faa040fb66200d92e85ace1050ee8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-10-27 17:04:11</sys_updated_on>
+        <sys_updated_on>2016-10-28 13:06:29</sys_updated_on>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>
 </record_update>

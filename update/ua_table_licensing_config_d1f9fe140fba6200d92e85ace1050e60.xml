@@ -9,7 +9,7 @@
         <sys_class_name>ua_table_licensing_config</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-10-27 10:55:08</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>d1f9fe140fba6200d92e85ace1050e60</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_44552_menu_das_tilepreference</sys_name>

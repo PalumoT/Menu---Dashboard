@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_wizard_answer">
+    <sys_wizard_answer action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <answer>Tile Preference</answer>
+        <button_label/>
+        <dependent_value/>
+        <element/>
+        <name>Tile Preference</name>
+        <next_question/>
+        <order>100</order>
+        <payload_name/>
+        <question display_value="Task" name="Task">c8e7e4610f202200d92e85ace1050ecc</question>
+        <roles/>
+        <script/>
+        <sys_class_name>sys_wizard_answer</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2016-10-28 08:22:24</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>2590e7600ffe6200d92e85ace1050ef5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Tile Preference</sys_name>
+        <sys_package display_value="Menu - Dashboard" source="x_44552_menu_das">2d7cee8c0f766200d92e85ace1050ecc</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Menu - Dashboard">2d7cee8c0f766200d92e85ace1050ecc</sys_scope>
+        <sys_update_name>sys_wizard_answer_2590e7600ffe6200d92e85ace1050ef5</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2016-10-28 08:22:24</sys_updated_on>
+        <table/>
+        <target_url>x_44552_menu_das_tilepreference.do</target_url>
+        <type>1</type>
+    </sys_wizard_answer>
+</record_update>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sys_ui_page">
     <sys_ui_page action="INSERT_OR_UPDATE">
-        <category>general</category>
+        <category>homepages</category>
         <client_script/>
         <description/>
         <direct>false</direct>
@@ -26,11 +26,10 @@
 		}
 		
 		.tile:hover{
-			cursor: pointer;
 			font-weight: bold;
 		}
 		
-		.tile .custom-badge{
+		.tile .custom-badge, .cross{
 			position:absolute;
 			background-color: grey;
 			color: white;
@@ -41,6 +40,20 @@
 			width:20px;
 			line-height: 20px;
 			border-radius:50%;
+		}		
+		
+		.header{
+			text-align: right;
+			margin:10px;
+		}
+		
+		.header input {
+			width:250px !important;
+			margin-right: 10px;
+		}
+		
+		.selected{
+			background-color: orange;
 		}
 	</style>
 	
@@ -48,22 +61,16 @@
 		<h2 class="title">{{ title }}</h2>
 		<h4>{{ subtitle }}</h4>
 		<div>Status: {{ message }}</div>
-		<label>Search: <input class="form-control" ng-model="search.name"/></label>
-		<div>
-			<ol class="breadcrumb">
-			  <li ng-repeat="item in path">
-					<a ng-click="clickTile(item)">{{ item.name }}</a>
-				</li>
-			</ol>
-			<ul class="list-inline">
-				
-			</ul>
+		<div class="header form-inline">
+			<input class="form-control" ng-model="search.name" placeholder="Search for a tile"/>
+			<a href="x_44552_menu_das_tile.do" class="btn btn-primary">New</a>
+			<button ng-click="loadTiles()" class="btn btn-primary">Refresh</button>
 		</div>
-		<div ng-show="!loading">
-			<div class="tile" ng-repeat="tile in tiles | filter:search" ngBind="tile" ng-click="clickTile(tile)">
+		<div ng-show="show=='tiles'" class="tile" ng-repeat="tile in tiles | filter:search" ngBind="tile">
+			<a href="{{ tile.table }}_list.do">
 				{{ tile.name }}
-				<span class="custom-badge">{{ tile.submenus.length}}</span>
-			</div>
+			</a>
+			<span class="cross" ng-click="deleteTile(tile); $event.preventDefault(); $event.stopPropagation();">X</span>
 		</div>
 	</div>
 </j:jelly>]]></html>
@@ -74,7 +81,7 @@
         <sys_created_on>2016-10-26 15:18:36</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>438c6a040fb66200d92e85ace1050ee8</sys_id>
-        <sys_mod_count>106</sys_mod_count>
+        <sys_mod_count>199</sys_mod_count>
         <sys_name>dashboard</sys_name>
         <sys_package display_value="Menu - Dashboard" source="x_44552_menu_das">2d7cee8c0f766200d92e85ace1050ecc</sys_package>
         <sys_policy/>
@@ -82,6 +89,6 @@
         <sys_scope display_value="Menu - Dashboard">2d7cee8c0f766200d92e85ace1050ecc</sys_scope>
         <sys_update_name>sys_ui_page_438c6a040fb66200d92e85ace1050ee8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-10-27 17:08:37</sys_updated_on>
+        <sys_updated_on>2016-10-28 13:05:23</sys_updated_on>
     </sys_ui_page>
 </record_update>

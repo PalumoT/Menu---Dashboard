@@ -4,7 +4,7 @@
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2016-10-27 09:06:23</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>d411e61c0f7a6200d92e85ace1050e59</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_44552_menu_das_tile.x_44552_menu_das_tile_user</sys_name>
