@@ -16,35 +16,35 @@
 		.tile{
 			position: relative;
 			display:inline-block;
-			height: 150px;
-			width: 150px;
 			border: 1px solid grey;
 			text-align:center;
-			line-height:150px;
 			margin: 10px;
 			border-radius: 15px;
 		}
-		
-		.tile:hover{
-			font-weight: bold;
+				
+		.tile .edit-tools{
+			text-align:right;
+			width:150px;
+			height:30px;
+			margin:10px 5px 00px 10px;
 		}
 		
-		.tile .custom-badge, .cross{
-			position:absolute;
-			background-color: grey;
-			color: white;
-			top: 10px;
-			right: 10px;
-			border: 1px solid black;
-			height:20px;
-			width:20px;
-			line-height: 20px;
-			border-radius:50%;
-		}		
+		.tile .edit-tools a{
+			margin-right:5px;
+		}
 		
+		.tile-content{
+			padding-top: 10px;
+			height: 120px;
+		}
+		
+		.tile a:{
+			line-height:normal;
+		}
+				
 		.header{
 			text-align: right;
-			margin:10px;
+			margin:10px;/
 		}
 		
 		.header input {
@@ -63,14 +63,25 @@
 		<div>Status: {{ message }}</div>
 		<div class="header form-inline">
 			<input class="form-control" ng-model="search.name" placeholder="Search for a tile"/>
-			<a href="x_44552_menu_das_tile.do" class="btn btn-primary">New</a>
-			<button ng-click="loadTiles()" class="btn btn-primary">Refresh</button>
+			<a href="x_44552_menu_das_tile.do" class="btn btn-primary" style="margin-right:10px">New</a>
+			<button ng-click="editMode()" class="btn btn-primary" style="margin-right:10px">Edit</button>
+			<button ng-click="refreshTiles()" class="btn btn-primary">Refresh</button>
 		</div>
-		<div ng-show="show=='tiles'" class="tile" ng-repeat="tile in tiles | filter:search" ngBind="tile">
-			<a href="{{ tile.table }}_list.do">
-				{{ tile.name }}
-			</a>
-			<span class="cross" ng-click="deleteTile(tile); $event.preventDefault(); $event.stopPropagation();">X</span>
+		<div ng-show="loading'" class="tile" ng-repeat="tile in tiles | filter:search" ngBind="tile">
+			<div class="edit-tools">
+				<a ng-show="edit" href="{{ tile.editUrl }}">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</a>
+				<a ng-show="edit" href="#" ng-click="deleteTile(tile); $event.preventDefault();">
+					<span class="glyphicon glyphicon-trash"></span>
+				</a>
+			</div>
+			<div class="tile-content">
+				<a href="{{ tile.url }}">
+					<p><img class="user_image" id="{{ tile.icon }}" src="{{ tile.icon }}.iix"/></p>
+					<p>{{ tile.name }}</p>
+				</a>
+			</div>
 		</div>
 	</div>
 </j:jelly>]]></html>
@@ -81,7 +92,7 @@
         <sys_created_on>2016-10-26 15:18:36</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>438c6a040fb66200d92e85ace1050ee8</sys_id>
-        <sys_mod_count>199</sys_mod_count>
+        <sys_mod_count>259</sys_mod_count>
         <sys_name>dashboard</sys_name>
         <sys_package display_value="Menu - Dashboard" source="x_44552_menu_das">2d7cee8c0f766200d92e85ace1050ecc</sys_package>
         <sys_policy/>
@@ -89,6 +100,6 @@
         <sys_scope display_value="Menu - Dashboard">2d7cee8c0f766200d92e85ace1050ecc</sys_scope>
         <sys_update_name>sys_ui_page_438c6a040fb66200d92e85ace1050ee8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-10-28 13:05:23</sys_updated_on>
+        <sys_updated_on>2016-10-28 14:43:17</sys_updated_on>
     </sys_ui_page>
 </record_update>

@@ -9,6 +9,7 @@
         <name>MenuDashboard</name>
         <script><![CDATA[var MenuDashboard = Class.create();
 MenuDashboard.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	TABLE_TILE: "x_44552_menu_das_tile",
 	
 	getDefaultMenus: function(){
 		var result = [];
@@ -98,7 +99,13 @@ MenuDashboard.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 			var tile = {};
 			tile.sys_id = query.sys_id.toString();
 			tile.name = query.name.toString();
-			tile.table = query.table.toString();
+			tile.url = query.table.toString() + "_list.do";
+			
+			if(query.filter != ""){
+				tile.url += "?sysparm_query=" + query.filter;
+			}
+			tile.editUrl = this.TABLE_TILE + ".do?sys_id=" + query.sys_id;
+			tile.icon = query.icon.getDisplayValue().toString();
 			tiles.push(tile);
 		}
 		
@@ -112,7 +119,7 @@ MenuDashboard.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
         <sys_created_on>2016-10-26 15:26:48</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>cb6ea2440fb66200d92e85ace1050e10</sys_id>
-        <sys_mod_count>126</sys_mod_count>
+        <sys_mod_count>133</sys_mod_count>
         <sys_name>MenuDashboard</sys_name>
         <sys_package display_value="Menu - Dashboard" source="x_44552_menu_das">2d7cee8c0f766200d92e85ace1050ecc</sys_package>
         <sys_policy>read</sys_policy>
@@ -120,6 +127,6 @@ MenuDashboard.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
         <sys_scope display_value="Menu - Dashboard">2d7cee8c0f766200d92e85ace1050ecc</sys_scope>
         <sys_update_name>sys_script_include_cb6ea2440fb66200d92e85ace1050e10</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2016-10-28 12:54:44</sys_updated_on>
+        <sys_updated_on>2016-10-28 14:39:22</sys_updated_on>
     </sys_script_include>
 </record_update>
