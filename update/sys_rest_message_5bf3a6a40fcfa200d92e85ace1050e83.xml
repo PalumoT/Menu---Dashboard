@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message">
+    <sys_rest_message action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <authentication_type>basic</authentication_type>
+        <basic_auth_password/>
+        <basic_auth_profile display_value="Nova Dev Rest">16146aa40fcfa200d92e85ace1050e4d</basic_auth_profile>
+        <basic_auth_user/>
+        <description/>
+        <name>Nova Dev Incident</name>
+        <oauth2_profile/>
+        <protocol_name/>
+        <rest_endpoint>https://novartiscorpdev.service-now.com/api/now/v1/table/incident</rest_endpoint>
+        <sys_class_name>sys_rest_message</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-11-09 14:14:48</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>5bf3a6a40fcfa200d92e85ace1050e83</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Nova Dev Incident</sys_name>
+        <sys_package display_value="Menu - Dashboard" source="x_44552_menu_das">2d7cee8c0f766200d92e85ace1050ecc</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Menu - Dashboard">2d7cee8c0f766200d92e85ace1050ecc</sys_scope>
+        <sys_update_name>sys_rest_message_5bf3a6a40fcfa200d92e85ace1050e83</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-11-09 14:14:48</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message>
+</record_update>

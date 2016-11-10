@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="oauth_entity_profile">
+    <oauth_entity_profile action="INSERT_OR_UPDATE">
+        <default>true</default>
+        <grant_type>authorization_code</grant_type>
+        <name>Wunderlist default_profile</name>
+        <oauth_entity display_value="26970dff1a6e14f0533a">ecaea1540f8ba200d92e85ace1050e84</oauth_entity>
+        <sys_class_name>oauth_entity_profile</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2016-11-08 15:42:23</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>f5cee9540f8ba200d92e85ace1050ebb</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Wunderlist default_profile</sys_name>
+        <sys_package display_value="Menu - Dashboard" source="x_44552_menu_das">2d7cee8c0f766200d92e85ace1050ecc</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Menu - Dashboard">2d7cee8c0f766200d92e85ace1050ecc</sys_scope>
+        <sys_update_name>oauth_entity_profile_f5cee9540f8ba200d92e85ace1050ebb</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-11-08 15:47:40</sys_updated_on>
+    </oauth_entity_profile>
+</record_update>

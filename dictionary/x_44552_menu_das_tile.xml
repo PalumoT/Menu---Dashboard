@@ -5,5 +5,11 @@
         <element label="Icon" max_length="40" name="icon" type="user_image"/>
         <element label="Name" max_length="40" name="name" type="string"/>
         <element label="Table" max_length="80" name="table" type="table_name"/>
+        <element choice="3" default="small" label="Width" max_length="40" name="width" type="choice">
+            <choice>
+                <element label="Small" sequence="1" value="small"/>
+                <element label="Large" sequence="2" value="large"/>
+            </choice>
+        </element>
     </element>
 </database>
